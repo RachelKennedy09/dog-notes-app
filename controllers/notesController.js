@@ -28,3 +28,14 @@ export async function createNote(req, res) {
 export function showNewForm(req, res) {
   res.render("notes/new", { message: null });
 }
+
+//Fetch notes
+export async function listNotes(req, res) {
+  try {
+    const notes = await Note.find().sort({ date: -1 }); //most recent first
+    res.render("notes/index", { notes });
+  } catch (err) {
+    console.error(" Error fetching notes:", err);
+    res.status(500).send("Error loading notes");
+  }
+}
