@@ -1,20 +1,30 @@
 import Note from "../models/Note.js";
 
-export async function createTestNote(req, res) {
+//Save a new dog walking note
+export async function createNote(req, res) {
   try {
-    const note = new Note({
-      weather: "Sunny",
-      incidents: "Barked at a squirrel",
-      poop: true,
-      other: "Did great on leash",
-      walker: "Rachel",
+    console.log("Form submitted:", req.body);
+    const { weather, incidents, other, walker } = req.body;
+
+    const poop = req.body.poop === "on";
+
+    const newNote = new Note({
+      weather,
+      incidents,
+      poop,
+      other,
+      walker,
     });
 
-    await note.save();
-
-    res.send("✅ Test note saved to MongoDB!");
+    await newNote.save();
+    res.render("notes/new", { message: " Note submitted successfully!" });
   } catch (err) {
-    console.error("❌ Error saving note:", err);
-    res.status(500).send("Error saving test note.");
+    console.error(" Error saving note:", err);
+    res.render("notes/new", { message: " Error saving note." });
   }
+}
+
+//Rendering new note form
+export function showNewForm(req, res) {
+  res.render("notes/new", { message: null });
 }
