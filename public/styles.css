@@ -474,3 +474,12 @@ body {
   color: green;
   font-weight: bold;
 }
+
+/* Styling for note card */
+.note-card {
+  background-color: #fdfaf6;
+  padding: 15px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.05);
+}

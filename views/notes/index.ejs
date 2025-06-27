@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Walking Reports</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1 class="form-title">🐶 Walk Reports</h1>
+
+        <% if (notes.length===0) { %>
+            <p>No notes yet.</p>
+            <% } else { %>
+                <% notes.forEach(note=> { %>
+                    <div class="note-card">
+                        <p><strong>Date:</strong>
+                            <%= note.date.toDateString() %>
+                        </p>
+                        <p><strong>Walker:</strong>
+                            <%= note.walker %>
+                        </p>
+                        <p><strong>Weather:</strong>
+                            <%= note.weather %>
+                        </p>
+                        <p><strong>Incidents:</strong>
+                            <%= note.incidents || "None" %>
+                        </p>
+                        <p><strong>Pooped:</strong>
+                            <%= note.poop ? "Yes 💩" : "No" %>
+                        </p>
+                        <p><strong>Other:</strong>
+                            <%= note.other || "—" %>
+                        </p>
+
+                        <form action="/notes/<%= note._id %>?_method=DELETE" method="POST" style="display:inline;">
+                            <button type="submit"> Delete </button>
+                        </form>
+
+                        <a href="/notes/<%= note._id %>/edit"> Edit </a>
+                    </div>
+
+                    <% }) %>
+                        <% } %>
+</body>
+
+</html>

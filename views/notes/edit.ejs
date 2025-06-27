@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Note</title>
+    <link href="stylesheet" href="/styles.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1> Edit Walk Report</h1>
+
+        <form action="/notes/<%= note._id %>?_method=PUT" method="POST">
+            <label>Weather:
+                <input type="text" name="weather" value="<%= note.weather %>" required>
+            </label><br><br>
+            
+            <label>Incidents:
+                <textarea name="incidents"><%= note.incidents %></textarea>
+            </label><br><br>
+
+            <label>
+                <input type="checkbox" name="poop" <%=note.poop ? "checked" : "" %>>
+                Did they poop?
+            </label><br><br>
+
+            <label>Other:
+                <textarea name="other"><%= note.other %></textarea>
+            </label><br><br>
+
+            <label>Walker:
+                <input type="text" name="walker" value="<%= note.walker %>" required>
+            </label><br><br>
+
+            <button type="submit">Save Changes</button>
+
+        </form>
+    </div>
+</body>
+
+</html>

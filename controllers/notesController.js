@@ -39,3 +39,45 @@ export async function listNotes(req, res) {
     res.status(500).send("Error loading notes");
   }
 }
+
+//Edit Form
+export async function showEditForm(req, res) {
+  try {
+    const note = await Note.findById(req.params.id);
+    res.render("notes/edit", { note });
+  } catch (err) {
+    res.status(404).send("Note not found");
+  }
+}
+
+//update note
+export async function updateNote(req, res) {
+  try {
+    const { weather, incidents, other, walker } = req.body;
+
+    const poop = req.body.poop === "on";
+
+    await Note.findByIdAndUpdate(req.params.id, {
+      weather,
+      incidents,
+      poop,
+      other,
+      walker,
+    });
+    res.redirect("/notes");
+  } catch (err) {
+    console.error("Error updating note:", err);
+    res.status(500).send("Error updating note");
+  }
+}
+
+//delete note
+
+export async function deleteNote(req, res) {
+  try {
+    await Note.findByIdAndDelete(req.params.id);
+    res.redirect("/notes");
+  } catch (err) {
+    res.status(500).send("Error deleting note");
+  }
+}

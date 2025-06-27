@@ -9,10 +9,12 @@ const app = express();
 //import mongoose to connect to MongoDB
 import mongoose from "mongoose";
 
-
 // set up EJs as the view engine
 app.set("view engine", "ejs");
 
+// import method override
+import methodOverride from "method-override";
+app.use(methodOverride("_method"));
 
 //import routes
 import notesRoutes from "./routes/notesRoutes.js";
