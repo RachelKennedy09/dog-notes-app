@@ -9,9 +9,13 @@ const app = express();
 //import mongoose to connect to MongoDB
 import mongoose from "mongoose";
 
+//import routes
+import notesRoutes from "./routes/notesRoutes.js";
+
 //Middleware to parse form data and JSON
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use("/", notesRoutes);
 
 //Server static files from the 'public' folder (CSS, images, etc.)
 app.use(express.static("public"));
