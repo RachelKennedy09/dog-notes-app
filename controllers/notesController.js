@@ -33,7 +33,8 @@ export function showNewForm(req, res) {
 export async function listNotes(req, res) {
   try {
     const notes = await Note.find().sort({ date: -1 }); //most recent first
-    res.render("notes/index", { notes });
+    const message = req.query.message || null; //capture message
+    res.render("notes/index", { notes, message });
   } catch (err) {
     console.error(" Error fetching notes:", err);
     res.status(500).send("Error loading notes");
@@ -64,7 +65,7 @@ export async function updateNote(req, res) {
       other,
       walker,
     });
-    res.redirect("/notes");
+    res.redirect("/notes?message=Note+updated+successfully!");
   } catch (err) {
     console.error("Error updating note:", err);
     res.status(500).send("Error updating note");
@@ -76,8 +77,9 @@ export async function updateNote(req, res) {
 export async function deleteNote(req, res) {
   try {
     await Note.findByIdAndDelete(req.params.id);
-    res.redirect("/notes");
+    res.redirect("/notes?message=Note+deleted+successfully!");
   } catch (err) {
+    console.error("Error deleting note:", err);
     res.status(500).send("Error deleting note");
   }
 }
