@@ -16,14 +16,30 @@ app.set("view engine", "ejs");
 import methodOverride from "method-override";
 app.use(methodOverride("_method"));
 
+//importing login tools
+import session from "express-session";
+import MongoStore from "connect-mongo";
+app.use(
+  session({
+    secret: "superdogsecret", // change this in production
+    resave: false,
+    saveUninitialized: false,
+    store: MongoStore.create({ mongoUrl: process.env.MONGO_URI }),
+    cookie: { maxAge: 1000 * 60 * 60 * 24 }, // 1 day
+  })
+);
+
 //import routes
 import notesRoutes from "./routes/notesRoutes.js";
+
+//import auth routes
+import authRoutes from "./routes/authRoutes.js";
 
 //Middleware to parse form data and JSON
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use("/", notesRoutes);
-
+app.use("/", authRoutes); // after app.use(express...) middleware
 //Server static files from the 'public' folder (CSS, images, etc.)
 app.use(express.static("public"));
 
