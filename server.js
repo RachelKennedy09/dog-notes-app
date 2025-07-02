@@ -19,6 +19,7 @@ app.use(methodOverride("_method"));
 //importing login tools
 import session from "express-session";
 import MongoStore from "connect-mongo";
+import flash from "connect-flash";
 app.use(
   session({
     secret: "superdogsecret", // change this in production
@@ -28,6 +29,18 @@ app.use(
     cookie: { maxAge: 1000 * 60 * 60 * 24 }, // 1 day
   })
 );
+
+//flash middleware
+app.use(flash());
+
+// Make flash messages accessible in all views
+app.use((req, res, next) => {
+  res.locals.messages = {
+    success: req.flash("success"),
+    error: req.flash("error"),
+  };
+  next();
+});
 
 // import user from models
 import User from "./models/User.js";
@@ -59,6 +72,14 @@ app.use("/", notesRoutes);
 app.use("/", authRoutes); // after app.use(express...) middleware
 //Server static files from the 'public' folder (CSS, images, etc.)
 app.use(express.static("public"));
+// Make flash messages available in all views
+app.use((req, res, next) => {
+  res.locals.messages = {
+    success: req.flash("success"),
+    error: req.flash("error"),
+  };
+  next();
+});
 
 //Connect to MongoDB using Mongoose
 mongoose

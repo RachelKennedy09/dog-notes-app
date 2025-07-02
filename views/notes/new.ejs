@@ -12,37 +12,62 @@
     <div class="container">
         <h1>Submit a Dog Walk Report</h1>
 
-        <% if (message) { %>
-            <p class="message">
-                <%= message %>
-            </p>
+        <!-- error if no note written -->
+        <% if (messages.error.length> 0) { %>
+            <div class="error">
+                <ul>
+                    <% messages.error.forEach(msg=> { %>
+                        <li>
+                            <%= msg %>
+                        </li>
+                        <% }) %>
+                </ul>
+            </div>
             <% } %>
 
+                <!-- success message -->
+                <% if (messages.success.length> 0) { %>
+                    <div class="success">
+                        <% messages.success.forEach(msg=> { %>
+                            <p>
+                                <%= msg %>
+                            </p>
+                            <% }) %>
+                    </div>
+                    <% } %>
 
-                <form action="/notes" method="POST" class="note-form">
-                    <label>Weather:
-                        <input type="text" name="weather" required>
-                    </label><br><br>
 
-                    <label>Incidents:
-                        <textarea name="incidents" rows="3"></textarea>
-                    </label><br><br>
+                        <% if (message) { %>
+                            <p class="message">
+                                <%= message %>
+                            </p>
+                            <% } %>
 
-                    <label>
-                        <input type="checkbox" name="poop">
-                        Did they poop? 💩
-                    </label><br><br>
 
-                    <label>Other notes:
-                        <textarea name="other" rows="3"></textarea>
-                    </label><br><br>
+                                <form action="/notes" method="POST" class="note-form">
+                                    <label>Weather:
+                                        <input type="text" name="weather" required>
+                                    </label><br><br>
 
-                    <label>Walker:
-                        <input type="text" name="walker" required>
-                    </label><br><br>
+                                    <label>Incidents:
+                                        <textarea name="incidents" rows="3"></textarea>
+                                    </label><br><br>
 
-                    <button type="submit">Submit Note</button>
-                </form>
+                                    <label>
+                                        <input type="checkbox" name="poop">
+                                        Did they poop? 💩
+                                    </label><br><br>
+
+                                    <label>Other notes:
+                                        <textarea name="other" rows="3"></textarea>
+                                    </label><br><br>
+
+                                    <label>Walker:
+                                        <input type="text" name="walker" required>
+                                    </label><br><br>
+
+                                    <button type="submit">Submit Note</button>
+                                </form>
     </div>
 </body>
 
