@@ -3,24 +3,21 @@ import Note from "../models/Note.js";
 //Save a new dog walking note
 export async function createNote(req, res) {
   try {
-    console.log("Form submitted:", req.body);
-    const { weather, incidents, other, walker } = req.body;
-
-    const poop = req.body.poop === "on";
-
-    const newNote = new Note({
-      weather,
-      incidents,
-      poop,
-      other,
-      walker,
-    });
-
-    await newNote.save();
-    res.render("notes/new", { message: " Note submitted successfully!" });
+    const note = new Note(req.body);
+    note.user = req.session.userId; // if using login
+    await note.save();
+    req.flash("success", "Note saved successfully!");
+    res.redirect("/notes");
   } catch (err) {
-    console.error(" Error saving note:", err);
-    res.render("notes/new", { message: " Error saving note." });
+    console.log("Error saving note:", err.message);
+    // If validation failed
+    if (err.name === "ValidationError") {
+      let messages = Object.values(err.errors).map((e) => e.message);
+      req.flash("error", messages.join(" "));
+    } else {
+      req.flash("error", "Something went wrong.");
+    }
+    res.redirect("/notes/new");
   }
 }
 
@@ -32,7 +29,9 @@ export function showNewForm(req, res) {
 //Fetch notes
 export async function listNotes(req, res) {
   try {
-    const notes = await Note.find().sort({ date: -1 }); //most recent first
+    const notes = await Note.find({ user: req.session.userId }).sort({
+      date: -1,
+    }); //most recent first
     const message = req.query.message || null; //capture message
     res.render("notes/index", { notes, message });
   } catch (err) {

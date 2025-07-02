@@ -12,46 +12,62 @@
     <div class="container">
         <h1 class="form-title">🐶 Walk Reports</h1>
 
-        <% if (message) { %>
-            <p class="message">
-                <%= message %>
-            </p>
+        <!-- Show current user -->
+        <% if (currentUser) { %>
+            <p style="text-align:right;">👋 Welcome, <strong>
+                    <%= currentUser %>
+                </strong>!</p>
             <% } %>
 
-                <% if (notes.length===0) { %>
-                    <p>No notes yet.</p>
-                    <% } else { %>
-                        <% notes.forEach(note=> { %>
-                            <div class="note-card">
-                                <p><strong>Date:</strong>
-                                    <%= note.date.toDateString() %>
-                                </p>
-                                <p><strong>Walker:</strong>
-                                    <%= note.walker %>
-                                </p>
-                                <p><strong>Weather:</strong>
-                                    <%= note.weather %>
-                                </p>
-                                <p><strong>Incidents:</strong>
-                                    <%= note.incidents || "None" %>
-                                </p>
-                                <p><strong>Pooped:</strong>
-                                    <%= note.poop ? "Yes 💩" : "No" %>
-                                </p>
-                                <p><strong>Other:</strong>
-                                    <%= note.other || "—" %>
-                                </p>
 
-                                <form action="/notes/<%= note._id %>?_method=DELETE" method="POST"
-                                    style="display:inline;">
-                                    <button type="submit"> Delete </button>
-                                </form>
+                <% if (message) { %>
+                    <p class="message">
+                        <%= message %>
+                    </p>
+                    <% } %>
+                        <!-- note from EJS -->
+                        <% if (notes.length===0) { %>
+                            <p>No notes yet.</p>
+                            <% } else { %>
+                                <% notes.forEach(note=> { %>
+                                    <div class="note-card">
+                                        <p><strong>Date:</strong>
+                                            <%= note.date.toDateString() %>
+                                        </p>
+                                        <p><strong>Walker:</strong>
+                                            <%= note.walker %>
+                                        </p>
+                                        <p><strong>Weather:</strong>
+                                            <%= note.weather %>
+                                        </p>
+                                        <p><strong>Incidents:</strong>
+                                            <%= note.incidents || "None" %>
+                                        </p>
+                                        <p><strong>Pooped:</strong>
+                                            <%= note.poop ? "Yes 💩" : "No" %>
+                                        </p>
+                                        <p><strong>Other:</strong>
+                                            <%= note.other || "—" %>
+                                        </p>
+                                        <!-- DELETE /EDIT POST -->
+                                        <form action="/notes/<%= note._id %>?_method=DELETE" method="POST"
+                                            style="display:inline;">
+                                            <button type="submit"> Delete </button>
+                                        </form>
+                                        <!-- log out button -->
+                                        <form action="/logout" method="POST" style="text-align:right;">
+                                            <button type="submit">Logout</button>
 
-                                <a href="/notes/<%= note._id %>/edit"> Edit </a>
-                            </div>
 
-                            <% }) %>
-                                <% } %>
+
+                                            <a href="/notes/<%= note._id %>/edit"> Edit </a>
+                                    </div>
+
+                                    <% }) %>
+                                        <% } %>
+
+
+
 </body>
 
 </html>

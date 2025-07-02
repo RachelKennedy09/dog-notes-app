@@ -29,6 +29,23 @@ app.use(
   })
 );
 
+// import user from models
+import User from "./models/User.js";
+
+app.use(async (req, res, next) => {
+  if (req.session.userId) {
+    try {
+      const user = await User.findById(req.session.userId);
+      res.locals.currentUser = user?.username || null; //pass username to all EJS views
+    } catch {
+      res.locals.currentUser = null;
+    }
+  } else {
+    res.locals.currentUser = null;
+  }
+  next();
+});
+
 //import routes
 import notesRoutes from "./routes/notesRoutes.js";
 

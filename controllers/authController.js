@@ -23,3 +23,32 @@ export async function registerUser(req, res) {
     res.render("auth/register", { message: "Something went wrong" });
   }
 }
+
+//login controller functions
+
+export function showLoginForm(req, res) {
+  res.render("auth/login", { message: null });
+}
+
+export async function loginUser(req, res) {
+  const { username, password } = req.body;
+
+  try {
+    const user = await User.findOne({ username });
+    if (!user || !(await user.isValidPassword(password))) {
+      return res.render("auth/login", { message: "Invalid credentials" });
+    }
+
+    req.session.userId = user._id;
+    res.redirect("/notes?message= Logged in!");
+  } catch (err) {
+    console.error("login error:", err);
+    res.render("auth/login", { message: " Something went wrong" });
+  }
+}
+  
+  export function logoutUser(req, res) {
+    req.session.destroy(() => {
+        res.redirect("/login?message= Logged out")
+    })
+  }
