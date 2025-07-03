@@ -9,35 +9,39 @@
 </head>
 
 <body>
-    <div class="container">
-        <h1> Edit Walk Report</h1>
+    <%- include('../partials/_header') %>
 
-        <form action="/notes/<%= note._id %>?_method=PUT" method="POST">
-            <label>Weather:
-                <input type="text" name="weather" value="<%= note.weather %>" required>
-            </label><br><br>
-            
-            <label>Incidents:
-                <textarea name="incidents"><%= note.incidents %></textarea>
-            </label><br><br>
+        <div class="container">
+            <h1> Edit Walk Report</h1>
 
-            <label>
-                <input type="checkbox" name="poop" <%=note.poop ? "checked" : "" %>>
-                Did they poop?
-            </label><br><br>
+            <form action="/notes/<%= note._id %>?_method=PUT" method="POST">
+                <label>Weather:
+                    <input type="text" name="weather" value="<%= note.weather %>" required>
+                </label><br><br>
 
-            <label>Other:
-                <textarea name="other"><%= note.other %></textarea>
-            </label><br><br>
+                <label>Incidents:
+                    <textarea name="incidents"><%= note.incidents %></textarea>
+                </label><br><br>
 
-            <label>Walker:
-                <input type="text" name="walker" value="<%= note.walker %>" required>
-            </label><br><br>
+                <label>
+                    <input type="checkbox" name="poop" <%=note.poop ? "checked" : "" %>>
+                    Did they poop?
+                </label><br><br>
 
-            <button type="submit">Save Changes</button>
+                <label>Other:
+                    <textarea name="other"><%= note.other %></textarea>
+                </label><br><br>
 
-        </form>
-    </div>
+                <label>Walker:
+                    <input type="text" name="walker" value="<%= note.walker %>" required>
+                </label><br><br>
+
+                <button type="submit">Save Changes</button>
+
+            </form>
+        </div>
+        <%- include('../partials/_footer') %>
+
 </body>
 
 </html>
