@@ -1,15 +1,13 @@
 <header>
     <h1>Rocky Mountain Tails - Walk Reports</h1>
-    <nav><a href="/notes"> All Notes</a>
+    <nav>
+        <a href="/notes">All Notes</a>
         <a href="/notes/new">New Notes</a>
-        <a href="/logout">Logout</a>
 
-
+        <!-- ✅ Real logout button that hits the backend route -->
+        <form action="/logout" method="POST" style="display: inline;">
+            <button type="submit">Logout</button>
+        </form>
     </nav>
-
     <hr>
-
-
-
-
 </header>

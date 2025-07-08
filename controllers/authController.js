@@ -46,9 +46,10 @@ export async function loginUser(req, res) {
     res.render("auth/login", { message: " Something went wrong" });
   }
 }
-  
-  export function logoutUser(req, res) {
-    req.session.destroy(() => {
-        res.redirect("/login?message= Logged out")
-    })
-  }
+
+export function logoutUser(req, res) {
+  console.log("Logout route hit");
+  req.session.destroy(() => {
+    res.redirect("https://rachelkennedy09.github.io/Rocky-Mountain-Tails/");
+  });
+}
