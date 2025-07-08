@@ -46,7 +46,7 @@
                                 <% } %>
 
 
-                                    <form action="/notes" method="POST" enctype="multipart/form-data" class="note-form">
+                                    <form action="/notes" method="POST">
 
                                         <label>Weather:
                                             <input type="text" name="weather" required>
@@ -69,9 +69,7 @@
                                             <input type="text" name="walker" required>
                                         </label><br><br>
 
-                                        <label>Upload a dog photo:
-                                            <input type="file" name="image" accept="image/*">
-                                        </label><br><br>
+
 
                                         <button type="submit">Submit Note</button>
                                     </form>

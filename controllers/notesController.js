@@ -1,30 +1,26 @@
 import Note from "../models/Note.js";
 
+//Save a new dog walking note
 export async function createNote(req, res) {
-  console.log("BODY:", req.body);
-  console.log("FILE:", req.file); // test multer
-
   try {
-    const { weather, incidents, poop, other, walker } = req.body;
+    // Convert checkbox values to Boolean manually
+    req.body.poop = req.body.poop === "on";
+    req.body.pee = req.body.pee === "on"; // if you have a 'pee' field too
 
-    const newNote = new Note({
-      weather,
-      incidents,
-      poop: poop === "on",
-      other,
-      walker,
-      image: req.file ? req.file.filename : null,
-      user: req.session.userId,
-    });
+    const note = new Note(req.body);
+    note.user = req.session.userId;
+    await note.save();
 
-    await newNote.save();
-    req.flash("success", "Walk report added!");
+    req.flash("success", "Note saved successfully!");
     res.redirect("/notes");
-    // Add this inside createNote() after saving:
-    console.log("SAVED NOTE:", newNote);
   } catch (err) {
-    console.error("CREATE NOTE ERROR:", err);
-    req.flash("error", "Something went wrong.");
+    console.log("Error saving note:", err.message);
+    if (err.name === "ValidationError") {
+      let messages = Object.values(err.errors).map((e) => e.message);
+      req.flash("error", messages.join(" "));
+    } else {
+      req.flash("error", "Something went wrong.");
+    }
     res.redirect("/notes/new");
   }
 }
