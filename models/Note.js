@@ -19,6 +19,7 @@ const noteSchema = new mongoose.Schema({
     type: String,
     required: [true, "Please specify your name."],
   },
+  image: String,
   date: {
     type: Date,
     default: Date.now,
