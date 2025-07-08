@@ -3,14 +3,18 @@ import Note from "../models/Note.js";
 //Save a new dog walking note
 export async function createNote(req, res) {
   try {
+    // Convert checkbox values to Boolean manually
+    req.body.poop = req.body.poop === "on";
+    req.body.pee = req.body.pee === "on"; // if you have a 'pee' field too
+
     const note = new Note(req.body);
-    note.user = req.session.userId; // if using login
+    note.user = req.session.userId;
     await note.save();
+
     req.flash("success", "Note saved successfully!");
     res.redirect("/notes");
   } catch (err) {
     console.log("Error saving note:", err.message);
-    // If validation failed
     if (err.name === "ValidationError") {
       let messages = Object.values(err.errors).map((e) => e.message);
       req.flash("error", messages.join(" "));
