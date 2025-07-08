@@ -1,25 +1,29 @@
 import Note from "../models/Note.js";
 
 export async function createNote(req, res) {
+  console.log("BODY:", req.body);
+  console.log("FILE:", req.file); // test multer
+
   try {
     const { weather, incidents, poop, other, walker } = req.body;
 
-    // Create new note object
     const newNote = new Note({
       weather,
       incidents,
-      poop: poop === "on", // convert checkbox to boolean
+      poop: poop === "on",
       other,
       walker,
-      image: req.file ? req.file.filename : null, // Add image filename if present
+      image: req.file ? req.file.filename : null,
+      user: req.session.userId,
     });
 
     await newNote.save();
-
     req.flash("success", "Walk report added!");
     res.redirect("/notes");
+    // Add this inside createNote() after saving:
+    console.log("SAVED NOTE:", newNote);
   } catch (err) {
-    console.error(err);
+    console.error("CREATE NOTE ERROR:", err);
     req.flash("error", "Something went wrong.");
     res.redirect("/notes/new");
   }

@@ -11,7 +11,8 @@ const storage = multer.diskStorage({
   destination: function (req, file, cb) {
     cb(null, path.join(__dirname, "../public/uploads")); // defining where the files get stored
   },
-  filename: function (req, file, cb) { //giving uploaded files a unique name so two people don't overwrite each others files
+  filename: function (req, file, cb) {
+    //giving uploaded files a unique name so two people don't overwrite each others files
     const uniqueSuffix = Date.now() + "-" + Math.round(Math.random() * 1e9);
     const ext = path.extname(file.originalname);
     cb(null, file.fieldname + "-" + uniqueSuffix + ext);
@@ -20,7 +21,7 @@ const storage = multer.diskStorage({
 
 const fileFilter = (req, file, cb) => {
   const allowedTypes = /jpeg|jpg|png|gif/; //only allowing image files which is optional but safe
-  const ext = allowedTypes.test(path.extreme(file.originalname).toLowerCase());
+  const ext = allowedTypes.test(path.extname(file.originalname).toLowerCase());
   const mime = allowedTypes.test(file.mimetype);
   if (ext && mime) {
     cb(null, true);

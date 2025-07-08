@@ -11,64 +11,71 @@
 <body>
     <%- include('../partials/_header') %>
 
-    <div class="container">
-        <h1 class="form-title">🐶 Walk Reports</h1>
+        <div class="container">
+            <h1 class="form-title">🐶 Walk Reports</h1>
 
-        <!-- Show current user -->
-        <% if (currentUser) { %>
-            <p style="text-align:right;">👋 Welcome, <strong>
-                    <%= currentUser %>
-                </strong>!</p>
-            <% } %>
-
-
-                <% if (message) { %>
-                    <p class="message">
-                        <%= message %>
-                    </p>
-                    <% } %>
-                        <!-- note from EJS -->
-                        <% if (notes.length===0) { %>
-                            <p>No notes yet.</p>
-                            <% } else { %>
-                                <% notes.forEach(note=> { %>
-                                    <div class="note-card">
-                                        <p><strong>Date:</strong>
-                                            <%= note.date.toDateString() %>
-                                        </p>
-                                        <p><strong>Walker:</strong>
-                                            <%= note.walker %>
-                                        </p>
-                                        <p><strong>Weather:</strong>
-                                            <%= note.weather %>
-                                        </p>
-                                        <p><strong>Incidents:</strong>
-                                            <%= note.incidents || "None" %>
-                                        </p>
-                                        <p><strong>Pooped:</strong>
-                                            <%= note.poop ? "Yes 💩" : "No" %>
-                                        </p>
-                                        <p><strong>Other:</strong>
-                                            <%= note.other || "—" %>
-                                        </p>
-                                        <!-- DELETE /EDIT POST -->
-                                        <form action="/notes/<%= note._id %>?_method=DELETE" method="POST"
-                                            style="display:inline;">
-                                            <button type="submit"> Delete </button>
-                                        </form>
-                                        <!-- log out button -->
-                                        <form action="/logout" method="POST" style="text-align:right;">
-                                            <button type="submit">Logout</button>
+            <!-- Show current user -->
+            <% if (currentUser) { %>
+                <p style="text-align:right;">👋 Welcome, <strong>
+                        <%= currentUser %>
+                    </strong>!</p>
+                <% } %>
 
 
+                    <% if (message) { %>
+                        <p class="message">
+                            <%= message %>
+                        </p>
+                        <% } %>
+                            <!-- note from EJS -->
+                            <% if (notes.length===0) { %>
+                                <p>No notes yet.</p>
+                                <% } else { %>
+                                    <% notes.forEach(note=> { %>
+                                        <div class="note-card">
 
-                                            <a href="/notes/<%= note._id %>/edit"> Edit </a>
-                                    </div>
 
-                                    <% }) %>
-                                        <% } %>
+                                            <p><strong>Date:</strong>
+                                                <%= note.date.toDateString() %>
+                                            </p>
+                                            <p><strong>Walker:</strong>
+                                                <%= note.walker %>
+                                            </p>
+                                            <p><strong>Weather:</strong>
+                                                <%= note.weather %>
+                                            </p>
+                                            <p><strong>Incidents:</strong>
+                                                <%= note.incidents || "None" %>
+                                            </p>
+                                            <p><strong>Pooped:</strong>
+                                                <%= note.poop ? "Yes 💩" : "No" %>
+                                            </p>
+                                            <p><strong>Other:</strong>
+                                                <%= note.other || "—" %>
+                                            </p>
+                                            <% if (note.image) { %>
+                                                <img src="/uploads/<%= note.image %>" alt="Dog photo"
+                                                    style="max-width: 100%; height: auto; margin-bottom: 10px;">
+                                                <% } %>
 
-<%- include('../partials/_footer') %>
+                                                    <!-- DELETE /EDIT POST -->
+                                                    <form action="/notes/<%= note._id %>?_method=DELETE" method="POST"
+                                                        style="display:inline;">
+                                                        <button type="submit"> Delete </button>
+                                                    </form>
+                                                    <!-- log out button -->
+                                                    <form action="/logout" method="POST" style="text-align:right;">
+                                                        <button type="submit">Logout</button>
+
+
+
+                                                        <a href="/notes/<%= note._id %>/edit"> Edit </a>
+                                        </div>
+
+                                        <% }) %>
+                                            <% } %>
+
+                                                <%- include('../partials/_footer') %>
 
 
 </body>
