@@ -50,6 +50,8 @@ export async function loginUser(req, res) {
 export function logoutUser(req, res) {
   console.log("Logout route hit");
   req.session.destroy(() => {
-    res.redirect("https://rachelkennedy09.github.io/Rocky-Mountain-Tails/");
+    res.redirect(
+      "https://rachelkennedy09.github.io/DogWalking_Finderapp/main.html"
+    );
   });
 }
