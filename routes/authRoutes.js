@@ -4,7 +4,6 @@ import {
   registerUser,
   showLoginForm,
   loginUser,
-  logoutUser,
 } from "../controllers/authController.js";
 
 const router = express.Router();
@@ -17,6 +16,14 @@ router.get("/login", showLoginForm);
 router.post("/login", loginUser);
 
 //logout route
-router.post("/logout", logoutUser);
+
+router.post("/logout", (req, res) => {
+  console.log("Logout route hit");
+  req.session.destroy(() => {
+    res.redirect(
+      "http://127.0.0.1:5500/projects/DogWalking_Finderapp/main.html"
+    );
+  });
+});
 
 export default router;

@@ -46,9 +46,11 @@ export async function loginUser(req, res) {
     res.render("auth/login", { message: " Something went wrong" });
   }
 }
-  
-  export function logoutUser(req, res) {
-    req.session.destroy(() => {
-        res.redirect("/login?message= Logged out")
-    })
-  }
+
+export function logoutUser(req, res) {
+  req.session.destroy(() => {
+    res.redirect(
+      "http://127.0.0.1:5500/projects/DogWalking_Finderapp/main.html"
+    );
+  });
+}
