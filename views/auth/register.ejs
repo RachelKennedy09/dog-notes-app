@@ -2,36 +2,45 @@
 <html lang="en">
 
 <head>
+    <!-- Meta tags for accessibility and responsive layout -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register</title>
 
+    <!-- Auth-specific stylesheet -->
     <link rel="stylesheet" href="/style-auth.css">
-
 </head>
 
 <body>
+    <!-- Box wrapper for the auth form -->
     <div class="auth-box">
-        <h1>Create a Walker Account </h1>
+        <h1>Create a Walker Account</h1>
 
+        <!-- Flash message for errors or status -->
         <% if (message) { %>
             <p class="message">
                 <%= message %>
             </p>
             <% } %>
 
+                <!-- REGISTER FORM -->
                 <form action="/register" method="POST">
-                    <label>Username:
-                        <input type="text" name="username" required>
+                    <label for="username" aria-label="Username">Username:</label>
+                    <input type="text" id="username" name="username" required autofocus
+                        placeholder="Choose a username" /><br><br>
 
-                    </label><br><br>
-
-                    <label>Password:
-                        <input type="password" name="password" required>
-                    </label><br><br>
+                    <label for="password" aria-label="Password">Password:</label>
+                    <input type="password" id="password" name="password" required
+                        placeholder="Create a strong password" /><br><br>
 
                     <button type="submit">Register</button>
                 </form>
+    </div>
+
+    <!-- CTA link to redirect users who already have an account -->
+    <div class="register-cta">
+        <p>Already have an account?</p>
+        <a href="/" class="register-button">Log in here</a>
     </div>
 </body>
 

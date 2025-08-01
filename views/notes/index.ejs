@@ -2,43 +2,46 @@
 <html lang="en">
 
 <head>
+    <!-- Meta tags for character encoding and mobile scaling -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Page title -->
     <title>All Walking Reports</title>
+
+    <!-- Link to main CSS file -->
     <link rel="stylesheet" href="/styles.css">
 </head>
 
 <body>
+    <!-- Reusable header partial (navigation) -->
     <%- include('../partials/_header') %>
 
         <div class="container">
             <h1 class="form-title">🐶 Walk Reports</h1>
-            <div style="text-align: right; margin-bottom: 20px;">
 
-            </div>
-
-
-            <!-- Show current user -->
+            <!-- Welcome message for logged-in user -->
             <% if (currentUser) { %>
-                <p style="text-align:right;">👋 Welcome, <strong>
+                <p style="text-align:right;"> Welcome, <strong>
                         <%= currentUser %>
                     </strong>!</p>
                 <% } %>
 
-
+                    <!-- Flash message (e.g. for successful updates) -->
                     <% if (message) { %>
                         <p class="message">
                             <%= message %>
                         </p>
                         <% } %>
-                            <!-- note from EJS -->
+
+                            <!-- Conditional: show message if no notes exist -->
                             <% if (notes.length===0) { %>
                                 <p>No notes yet.</p>
                                 <% } else { %>
+
+                                    <!-- Loop through all notes -->
                                     <% notes.forEach(note=> { %>
                                         <div class="note-card">
-
-
                                             <p><strong>Date:</strong>
                                                 <%= note.date.toDateString() %>
                                             </p>
@@ -57,33 +60,37 @@
                                             <p><strong>Other:</strong>
                                                 <%= note.other || "—" %>
                                             </p>
+
+                                            <!-- Optional photo upload -->
                                             <% if (note.image) { %>
                                                 <img src="/uploads/<%= note.image %>" alt="Dog photo"
-                                                    style="max-width: 100%; height: auto; margin-bottom: 10px;">
+                                                    style="max-width: 100%; height: auto; margin-bottom: 10px;" />
                                                 <% } %>
 
-                                                    <!-- DELETE /EDIT POST -->
-                                                    <form action="/notes/<%= note._id %>?_method=DELETE" method="POST"
-                                                        style="display:inline;">
-                                                        <button type="submit"> Delete </button>
-                                                    </form>
-                                                    <!-- log out button -->
-                                                    <form action="/logout" method="POST" style="display: inline;">
-                                                        <button type="submit">Logout</button>
-                                                    </form>
+                                                    <!-- ACTION BUTTONS (edit/delete/logout) -->
+                                                    <div class="note-actions">
+                                                        <form action="/notes/<%= note._id %>?_method=DELETE"
+                                                            method="POST" style="display:inline;">
+                                                            <button type="submit">Delete</button>
+                                                        </form>
 
-
-
-
-                                                    <a href="/notes/<%= note._id %>/edit"> Edit </a>
+                                                        <a href="/notes/<%= note._id %>/edit"
+                                                            class="edit-button">Edit</a>
+                                                    </div>
                                         </div>
-
                                         <% }) %>
+
                                             <% } %>
 
-                                                <%- include('../partials/_footer') %>
+                                                <!-- Log out button -->
+                                                <form action="/logout" method="POST"
+                                                    style="text-align: center; margin-top: 30px;">
+                                                    <button type="submit">Logout</button>
+                                                </form>
+        </div>
 
-
+        <!-- Footer partial -->
+        <%- include('../partials/_footer') %>
 </body>
 
 </html>

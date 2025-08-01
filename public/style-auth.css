@@ -65,12 +65,11 @@ body {
   font-size: 16px;
 }
 
-/* Styled register button */
 .register-button {
   display: inline-block;
   margin-top: 8px;
   padding: 10px 20px;
-  background-color: #2c5f2d; /* deep green (matches your theme) */
+  background-color: #2c5f2d;
   color: #fff;
   text-decoration: none;
   border-radius: 6px;
@@ -79,5 +78,20 @@ body {
 }
 
 .register-button:hover {
-  background-color: #3f8b3f; /* lighter green on hover */
+  background-color: #3f8b3f;
+}
+
+.forgot-password {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.forgot-password a {
+  color: #2c5f2d;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.forgot-password a:hover {
+  text-decoration: underline;
 }

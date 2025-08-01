@@ -2,19 +2,20 @@
 <html lang="en">
 
 <head>
+    <!-- Meta tags -->
     <meta charset="UTF-8">
     <title>Dog Walk Report</title>
     <link rel="stylesheet" href="/styles.css">
-
 </head>
 
 <body>
+    <!-- Sitewide header -->
     <%- include('../partials/_header') %>
 
         <div class="container">
             <h1>Submit a Dog Walk Report</h1>
 
-            <!-- error if no note written -->
+            <!-- Error message block -->
             <% if (messages.error.length> 0) { %>
                 <div class="error">
                     <ul>
@@ -27,7 +28,7 @@
                 </div>
                 <% } %>
 
-                    <!-- success message -->
+                    <!-- Success message block -->
                     <% if (messages.success.length> 0) { %>
                         <div class="success">
                             <% messages.success.forEach(msg=> { %>
@@ -38,44 +39,48 @@
                         </div>
                         <% } %>
 
-
+                            <!-- Optional general message (e.g. ?message=...) -->
                             <% if (message) { %>
                                 <p class="message">
                                     <%= message %>
                                 </p>
                                 <% } %>
 
+                                    <!-- NEW NOTE FORM -->
+                                    <form action="/notes" method="POST" class="note-form">
+                                        <!-- Weather input -->
+                                        <label for="weather">Weather:</label>
+                                        <input type="text" id="weather" name="weather" required
+                                            placeholder="e.g. Sunny, Windy, Light Rain" /><br><br>
 
-                                    <form action="/notes" method="POST">
+                                        <!-- Incidents textarea -->
+                                        <label for="incidents">Incidents:</label>
+                                        <textarea id="incidents" name="incidents" rows="3"
+                                            placeholder="Any issues or fun stories?"></textarea><br><br>
 
-                                        <label>Weather:
-                                            <input type="text" name="weather" required>
-                                        </label><br><br>
-
-                                        <label>Incidents:
-                                            <textarea name="incidents" rows="3"></textarea>
-                                        </label><br><br>
-
+                                        <!-- Checkbox: poop -->
                                         <label>
                                             <input type="checkbox" name="poop">
                                             Did they poop? 💩
                                         </label><br><br>
 
-                                        <label>Other notes:
-                                            <textarea name="other" rows="3"></textarea>
-                                        </label><br><br>
+                                        <!-- Other notes -->
+                                        <label for="other">Other notes:</label>
+                                        <textarea id="other" name="other" rows="3"
+                                            placeholder="Anything else worth mentioning?"></textarea><br><br>
 
-                                        <label>Walker:
-                                            <input type="text" name="walker" required>
-                                        </label><br><br>
+                                        <!-- Walker name -->
+                                        <label for="walker">Walker:</label>
+                                        <input type="text" id="walker" name="walker" required
+                                            placeholder="e.g. Rachel" /><br><br>
 
-
-
+                                        <!-- Submit -->
                                         <button type="submit">Submit Note</button>
                                     </form>
         </div>
-        <%- include('../partials/_footer') %>
 
+        <!-- Footer partial -->
+        <%- include('../partials/_footer') %>
 </body>
 
 </html>

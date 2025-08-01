@@ -2,37 +2,53 @@
 <html lang="en">
 
 <head>
+    <!-- Meta settings for character encoding and responsive scaling -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Page title -->
     <title>Login</title>
+
+    <!-- Link to external stylesheet specifically for auth pages -->
     <link rel="stylesheet" href="/style-auth.css" />
 </head>
 
 <body>
+    <!-- Wrapper box for login content -->
     <div class="auth-box">
         <h1>Welcome Back 🐾</h1>
 
+        <!-- Flash message area: shows errors or status messages -->
         <% if (message) { %>
             <p class="message">
                 <%= message %>
             </p>
             <% } %>
 
+                <!-- LOGIN FORM -->
+                <!-- Form posts to /login and expects username + password -->
                 <form action="/login" method="POST">
-                    <label for="username">Username:</label>
-                    <input type="text" id="username" name="username" required />
+                    <label for="username" aria-label="Username">Username:</label>
+                    <input type="text" id="username" name="username" required autofocus
+                        placeholder="Enter your username" />
 
-                    <label for="password">Password:</label>
-                    <input type="password" id="password" name="password" required />
+                    <label for="password" aria-label="Password">Password:</label>
+                    <input type="password" id="password" name="password" required placeholder="Enter your password" />
 
                     <button type="submit">Login</button>
                 </form>
+
+                <!-- link for users who forget their password -->
+                <p class="forgot-password">
+                    <a href="#">Forgot your password?</a>
+                </p>
     </div>
 
- <div class="register-cta">
-  <p>Don't have an account?</p>
-  <a href="/register" class="register-button">Register here</a>
-</div>
+    <!-- Call-to-action for users who don’t have an account -->
+    <div class="register-cta">
+        <p>Don't have an account?</p>
+        <a href="/register" class="register-button">Register here</a>
+    </div>
 </body>
 
 </html>

@@ -2,46 +2,63 @@
 <html lang="en">
 
 <head>
+    <!-- Character encoding and responsive design meta tags -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Page title -->
     <title>Edit Note</title>
-    <link href="stylesheet" href="/styles.css">
+
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="/styles.css">
 </head>
 
 <body>
+    <!-- Header partial (includes navigation) -->
     <%- include('../partials/_header') %>
 
+        <!-- Main content wrapper -->
         <div class="container">
-            <h1> Edit Walk Report</h1>
+            <h1>Edit Walk Report 🐾</h1>
 
+            <!-- EDIT FORM -->
+            <!-- Uses method override to send PUT request -->
             <form action="/notes/<%= note._id %>?_method=PUT" method="POST">
-                <label>Weather:
-                    <input type="text" name="weather" value="<%= note.weather %>" required>
-                </label><br><br>
 
-                <label>Incidents:
-                    <textarea name="incidents"><%= note.incidents %></textarea>
-                </label><br><br>
+                <!-- Weather input -->
+                <label for="weather">Weather:</label>
+                <input type="text" id="weather" name="weather" value="<%= note.weather %>" required
+                    placeholder="e.g. Sunny, Snowy, Rainy" /><br><br>
 
+                <!-- Incidents input -->
+                <label for="incidents">Incidents:</label>
+                <textarea id="incidents" name="incidents"
+                    placeholder="Describe any issues or encounters"><%= note.incidents %></textarea><br><br>
+
+                <!-- Poop checkbox -->
                 <label>
-                    <input type="checkbox" name="poop" <%=note.poop ? "checked" : "" %>>
+                    <input type="checkbox" name="poop" <%=note.poop ? "checked" : "" %>
+                    />
                     Did they poop?
                 </label><br><br>
 
-                <label>Other:
-                    <textarea name="other"><%= note.other %></textarea>
-                </label><br><br>
+                <!-- Other notes input -->
+                <label for="other">Other Notes:</label>
+                <textarea id="other" name="other"
+                    placeholder="Anything else worth mentioning?"><%= note.other %></textarea><br><br>
 
-                <label>Walker:
-                    <input type="text" name="walker" value="<%= note.walker %>" required>
-                </label><br><br>
+                <!-- Walker name input -->
+                <label for="walker">Walker:</label>
+                <input type="text" id="walker" name="walker" value="<%= note.walker %>" required
+                    placeholder="e.g. Rachel" /><br><br>
 
+                <!-- Submit button -->
                 <button type="submit">Save Changes</button>
-
             </form>
         </div>
-        <%- include('../partials/_footer') %>
 
+        <!-- Footer partial (optional site-wide footer) -->
+        <%- include('../partials/_footer') %>
 </body>
 
 </html>
