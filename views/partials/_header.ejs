@@ -1,13 +1,18 @@
-<header>
-    <h1>Rocky Mountain Tails - Walk Reports</h1>
-    <nav>
-        <a href="/notes">All Notes</a>
-        <a href="/notes/new">New Notes</a>
+<header class="site-header">
+    <div class="container">
+        <h1>Rocky Mountain Tails — Walk Reports</h1>
 
-        <!-- ✅ Real logout button that hits the backend route -->
-        <form action="/logout" method="POST" style="display: inline;">
-            <button type="submit">Logout</button>
-        </form>
-    </nav>
+        <!-- Navigation links -->
+        <nav class="main-nav">
+            <a href="/notes">All Notes</a>
+            <a href="/notes/new">New Note</a>
+
+            <!-- Logout form styled like a nav link -->
+            <form action="/logout" method="POST" class="logout-form">
+                <button type="submit">Logout</button>
+            </form>
+        </nav>
+    </div>
+
     <hr>
 </header>
