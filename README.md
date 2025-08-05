@@ -27,9 +27,9 @@ Welcome to the **Dog Notes App**, a secure and user-friendly note-taking system 
 ### 📦 Installation
 
 
-git clone https://github.com/RachelKennedy09/DogWalking_Finderapp.git
-cd RockyMountainTails/dog-notes-app
-npm install
+-git clone https://github.com/RachelKennedy09/DogWalking_Finderapp.git
+-cd RockyMountainTails/dog-notes-app
+-npm install
 
 
 ### 🔑 Setup Environment Variables
@@ -47,9 +47,9 @@ SESSION_SECRET=your-secret-key
 npm run dev
 
 Visit: homepage → WalkerLogin or WalkerRegister
-👉 https://rachelkennedy09.github.io/DogWalking_Finderapp.git
+👉[ https://rachelkennedy09.github.io/DogWalking_Finderapp.git](https://github.com/RachelKennedy09/PortfolioMAIN/tree/main/projects/DogWalking_Finderapp)
 
-To log in: visit [http://localhost:3000/login](http://localhost:3000/login)
+To log in: visit [http://localhost:3000](http://localhost:3000)
 
 ---
 
