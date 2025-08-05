@@ -7,12 +7,12 @@ Welcome to the **Dog Notes App**, a secure and user-friendly note-taking system 
 ## 📂 Project Structure
 
 - **Frontend**: HTML, CSS (GitHub Pages)
-- **Backend**: Node.js, Express, MongoDB (local or deployable to Render)
+- **Backend**: Node.js, Express, MongoDB 
 - **Authentication**: Session-based login
 - **Database**: MongoDB with Mongoose models
 - **Views**: EJS templates
 - **Routing**: Express routes for login, notes, and logout
-- **Project Folder**: `dog-notes-app` inside main project repo
+- **Project Folder**: `dog-notes-app` 
 
 ---
 
@@ -26,11 +26,11 @@ Welcome to the **Dog Notes App**, a secure and user-friendly note-taking system 
 
 ### 📦 Installation
 
-```bash
-git clone https://github.com/RachelKennedy09/RockyMountainTails.git
+
+git clone https://github.com/RachelKennedy09/DogWalking_Finderapp.git
 cd RockyMountainTails/dog-notes-app
 npm install
-```
+
 
 ### 🔑 Setup Environment Variables
 
@@ -43,12 +43,11 @@ SESSION_SECRET=your-secret-key
 
 ### 🖥 Start the Server
 
-```bash
+
 npm run dev
-```
 
 Visit: homepage → WalkerLogin or WalkerRegister
-👉 https://rachelkennedy09.github.io/RockyMountainTails/
+👉 https://rachelkennedy09.github.io/DogWalking_Finderapp.git
 
 To log in: visit [http://localhost:3000/login](http://localhost:3000/login)
 
