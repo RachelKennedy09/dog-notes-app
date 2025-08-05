@@ -111,11 +111,5 @@ This project was an incredible learning experience. Here are some of the **wins*
 
 ## 📎 Submission Summary
 
-<<<<<<< HEAD
 - ✅ GitHub Repo: [https://github.com/RachelKennedy09/portfolioMAIN](https://github.com/RachelKennedy09/portfolioMAIN)
 - ✅ Note-Taking App: `dog-notes-app` folder with backend logic
-=======
-- ✅ GitHub Repo: [https://github.com/RachelKennedy09/RockyMountainTails](https://github.com/RachelKennedy09/RockyMountainTails)
-- ✅ Homepage: [Live GitHub Pages site](https://rachelkennedy09.github.io/RockyMountainTails/)
-- ✅ Note-Taking App: `dog-notes-app` folder with backend logic
->>>>>>> f7d2a8039ed89290cd48602b48ce22f6d0ec68dc
