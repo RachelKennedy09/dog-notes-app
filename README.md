@@ -27,9 +27,9 @@ Welcome to the **Dog Notes App**, a secure and user-friendly note-taking system 
 ### 📦 Installation
 
 
-git clone https://github.com/RachelKennedy09/DogWalking_Finderapp.git
-cd RockyMountainTails/dog-notes-app
-npm install
+-git clone[Rocky Mountain Tails](https://github.com/RachelKennedy09/PortfolioMAIN)
+-cd RockyMountainTails/dog-notes-app
+-npm install
 
 
 ### 🔑 Setup Environment Variables
@@ -47,7 +47,13 @@ SESSION_SECRET=your-secret-key
 npm run dev
 
 Visit: homepage → WalkerLogin or WalkerRegister
+<<<<<<< HEAD
 👉 https://github.com/RachelKennedy09/PortfolioMAIN/tree/main/projects/DogWalking_Finderapp
+=======
+👉[Rocky Mountain Tails](https://github.com/RachelKennedy09/PortfolioMAIN/tree/main/projects/DogWalking_Finderapp)
+
+To log in: visit [http://localhost:3000](http://localhost:3000)
+>>>>>>> f7d2a8039ed89290cd48602b48ce22f6d0ec68dc
 
 To log in: visit [http://localhost:3000](http://localhost:3000)
 To log out: Logout button takes you to the home page
@@ -105,5 +111,11 @@ This project was an incredible learning experience. Here are some of the **wins*
 
 ## 📎 Submission Summary
 
+<<<<<<< HEAD
 - ✅ GitHub Repo: [https://github.com/RachelKennedy09/portfolioMAIN](https://github.com/RachelKennedy09/portfolioMAIN)
 - ✅ Note-Taking App: `dog-notes-app` folder with backend logic
+=======
+- ✅ GitHub Repo: [https://github.com/RachelKennedy09/RockyMountainTails](https://github.com/RachelKennedy09/RockyMountainTails)
+- ✅ Homepage: [Live GitHub Pages site](https://rachelkennedy09.github.io/RockyMountainTails/)
+- ✅ Note-Taking App: `dog-notes-app` folder with backend logic
+>>>>>>> f7d2a8039ed89290cd48602b48ce22f6d0ec68dc
