@@ -27,7 +27,7 @@ Welcome to the **Dog Notes App**, a secure and user-friendly note-taking system 
 ### 📦 Installation
 
 
--git clone https://github.com/RachelKennedy09/DogWalking_Finderapp.git
+-git clone[Rocky Mountain Tails](https://github.com/RachelKennedy09/PortfolioMAIN)
 -cd RockyMountainTails/dog-notes-app
 -npm install
 
