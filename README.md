@@ -47,13 +47,7 @@ SESSION_SECRET=your-secret-key
 npm run dev
 
 Visit: homepage → WalkerLogin or WalkerRegister
-<<<<<<< HEAD
-👉 https://github.com/RachelKennedy09/PortfolioMAIN/tree/main/projects/DogWalking_Finderapp
-=======
 👉[Rocky Mountain Tails](https://github.com/RachelKennedy09/PortfolioMAIN/tree/main/projects/DogWalking_Finderapp)
-
-To log in: visit [http://localhost:3000](http://localhost:3000)
->>>>>>> f7d2a8039ed89290cd48602b48ce22f6d0ec68dc
 
 To log in: visit [http://localhost:3000](http://localhost:3000)
 To log out: Logout button takes you to the home page
