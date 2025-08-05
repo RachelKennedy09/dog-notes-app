@@ -27,9 +27,9 @@ Welcome to the **Dog Notes App**, a secure and user-friendly note-taking system 
 ### 📦 Installation
 
 
--git clone[Rocky Mountain Tails](https://github.com/RachelKennedy09/PortfolioMAIN)
--cd RockyMountainTails/dog-notes-app
--npm install
+- git clone[Rocky Mountain Tails](https://github.com/RachelKennedy09/PortfolioMAIN)
+- right click dog-notes-app folder and open in integrated terminal 
+- npm install
 
 
 ### 🔑 Setup Environment Variables
@@ -46,11 +46,8 @@ SESSION_SECRET=your-secret-key
 
 npm run dev
 
-Visit: homepage → WalkerLogin or WalkerRegister
-👉[Rocky Mountain Tails](https://github.com/RachelKennedy09/PortfolioMAIN/tree/main/projects/DogWalking_Finderapp)
-
-To log in: visit [http://localhost:3000](http://localhost:3000)
-To log out: Logout button takes you to the home page
+-To log in: visit [http://localhost:3000](http://localhost:3000)
+-To log out: Logout button takes you to the home page
 ---
 
 ## 🧪 API Overview
