@@ -47,10 +47,10 @@ SESSION_SECRET=your-secret-key
 npm run dev
 
 Visit: homepage → WalkerLogin or WalkerRegister
-👉 https://rachelkennedy09.github.io/DogWalking_Finderapp.git
+👉 https://github.com/RachelKennedy09/PortfolioMAIN/tree/main/projects/DogWalking_Finderapp
 
-To log in: visit [http://localhost:3000/login](http://localhost:3000/login)
-
+To log in: visit [http://localhost:3000](http://localhost:3000)
+To log out: Logout button takes you to the home page
 ---
 
 ## 🧪 API Overview
@@ -105,6 +105,5 @@ This project was an incredible learning experience. Here are some of the **wins*
 
 ## 📎 Submission Summary
 
-- ✅ GitHub Repo: [https://github.com/RachelKennedy09/RockyMountainTails](https://github.com/RachelKennedy09/RockyMountainTails)
-- ✅ Homepage: [Live GitHub Pages site](https://rachelkennedy09.github.io/RockyMountainTails/)
+- ✅ GitHub Repo: [https://github.com/RachelKennedy09/portfolioMAIN](https://github.com/RachelKennedy09/portfolioMAIN)
 - ✅ Note-Taking App: `dog-notes-app` folder with backend logic
